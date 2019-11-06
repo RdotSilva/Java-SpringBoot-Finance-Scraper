@@ -18,4 +18,9 @@ public class StocksController {
         return stocks;
     }
 
+    @GetMapping("/{id}")
+    public Stock get(@PathVariable("id") long id) {
+        return new Stock();
+    }
+
 }
