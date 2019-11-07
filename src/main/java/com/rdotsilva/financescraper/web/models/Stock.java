@@ -1,17 +1,18 @@
 package com.rdotsilva.financescraper.web.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "Stock")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int scrapeId;
+    private long id;
 
     private Timestamp scrapeDate;
     private String symbol;
@@ -22,12 +23,12 @@ public class Stock {
     private String averageVolume;
     private String marketCap;
 
-    public int getScrapeId() {
-        return scrapeId;
+    public long id() {
+        return id;
     }
 
-    public void setScrapeId(int scrapeId) {
-        this.scrapeId = scrapeId;
+    public void id(int id) {
+        this.id = id;
     }
 
     public Timestamp getScrapeDate() {
