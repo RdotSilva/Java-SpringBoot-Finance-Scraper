@@ -1,12 +1,26 @@
 package com.rdotsilva.financescraper.web.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
+@Entity
 public class Stock {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int scrapeId;
+
     private Timestamp scrapeDate;
     private String symbol;
     private String lastPrice;
+    private String changeAmount;
+    private String changePercent;
+    private String volume;
+    private String averageVolume;
+    private String marketCap;
 
     public int getScrapeId() {
         return scrapeId;
@@ -79,10 +93,4 @@ public class Stock {
     public void setMarketCap(String marketCap) {
         this.marketCap = marketCap;
     }
-
-    private String changeAmount;
-    private String changePercent;
-    private String volume;
-    private String averageVolume;
-    private String marketCap;
 }
