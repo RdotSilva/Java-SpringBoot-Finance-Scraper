@@ -87,4 +87,9 @@ public class ScrapeController {
             System.out.println("Stock " + symbol);
         }
     }
+
+    @RequestMapping("/scrape")
+    public String scraper() {
+        return "scrape";
+    }
 }
