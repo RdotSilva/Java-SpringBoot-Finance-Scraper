@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Stock Data</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Symbol</th>
+        <th>Last Price</th>
+        <th>Change Amount</th>
+        <th>Change Percent</th>
+        <th>Volume</th>
+        <th>Average Volume</th>
+        <th>Market Cap</th>
+    </tr>
+    <tr data-th-each="stock : ${stocks}">
+        <td data-th-text="${stock.scrapeDate}">...</td>
+        <td data-th-text="${stock.symbol}">...</td>
+        <td data-th-text="${stock.lastPrice}">...</td>
+        <td data-th-text="${stock.changeAmount}">...</td>
+        <td data-th-text="${stock.changePercent}">...</td>
+        <td data-th-text="${stock.volume}">...</td>
+        <td data-th-text="${stock.averageVolume}">...</td>
+        <td data-th-text="${stock.marketCap}">...</td>
+    </tr>
+</table>
+</body>
+</html>
