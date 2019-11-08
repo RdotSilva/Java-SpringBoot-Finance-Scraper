@@ -1,6 +1,7 @@
 package com.rdotsilva.financescraper.web.controllers;
 
 import com.rdotsilva.financescraper.web.models.Stock;
+import com.rdotsilva.financescraper.web.repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.openqa.selenium.By;
@@ -21,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 
 @Controller
 public class ScrapeController {
+    @Autowired
+    private StockRepository stockRepository;
 
     @RequestMapping(value = "/scrape", method = RequestMethod.GET)
     public void scrape() throws SQLException {
@@ -84,7 +87,18 @@ public class ScrapeController {
             String averageVolume = eachStock[8];
             String marketCap = splitMarketCap[0];
 
-            System.out.println("Stock " + symbol);
+            // JPA insertion
+            Stock stock = new Stock();
+            stock.setScrapeDate(sqlDate);
+            stock.setSymbol(symbol);
+            stock.setLastPrice(lastPrice);
+            stock.setChangeAmount(changeAmount);
+            stock.setChangePercent(changePercent);
+            stock.setVolume(volume);
+            stock.setAverageVolume(averageVolume);
+            stock.setMarketCap(marketCap);
+
+            stockRepository.save(stock);
         }
     }
 
