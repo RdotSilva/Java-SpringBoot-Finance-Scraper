@@ -22,11 +22,26 @@ public class StocksController {
     public String getAllStocks(Model model)
     {
         List<Stock> list = stockRepository.findAll();
+        System.out.println(list.size());
 
         model.addAttribute("stocks", list);
         return "stocks";
 
     }
+
+    @RequestMapping(value = "/latest", method = RequestMethod.GET)
+    public String getLatestStocks(Model model)
+    {
+        List<Stock> list = stockRepository.findAll();
+
+        List<Stock> subList = list.subList(list.size()-10, list.size());
+        System.out.println(subList.size());
+
+        model.addAttribute("latest", subList);
+        return "latest";
+
+    }
+
 
 //    @GetMapping
 //    public List<Stock> list() {
