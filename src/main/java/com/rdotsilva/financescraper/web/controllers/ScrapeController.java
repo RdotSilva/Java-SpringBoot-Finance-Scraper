@@ -26,7 +26,7 @@ public class ScrapeController {
     private StockRepository stockRepository;
 
     @RequestMapping(value = "/scrape", method = RequestMethod.GET)
-    public void scrape() throws SQLException {
+    public String scrape() throws SQLException {
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
@@ -100,10 +100,12 @@ public class ScrapeController {
 
             stockRepository.save(stock);
         }
+        driver.close();
+        return "redirect:latest";
     }
 
-    @RequestMapping("/scrape")
-    public String scraper() {
-        return "scrape";
-    }
+//    @RequestMapping("/scrape")
+//    public String scraper() {
+//        return "scrape";
+//    }
 }
