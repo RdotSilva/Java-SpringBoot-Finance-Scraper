@@ -27,7 +27,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                         <input type="text" th:field="*{email}" class="form-control" id="email"
-                               placeholder="username@jackrutorial.com" required autofocus>
+                               placeholder="email@address.com" required autofocus>
                     </div>
                 </div>
             </div>
@@ -64,6 +64,7 @@
                 <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
             </div>
         </div>
+        <div class="margin-top20 text-center"> Already have an account? <a th:href="@{/login}">Login</a></div>
     </form>
 </div>
 </body>
