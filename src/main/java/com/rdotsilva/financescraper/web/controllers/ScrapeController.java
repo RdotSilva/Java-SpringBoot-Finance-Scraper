@@ -98,9 +98,4 @@ public class ScrapeController {
         driver.close();
         return "redirect:latest";
     }
-
-//    @RequestMapping("/scrape")
-//    public String scraper() {
-//        return "scrape";
-//    }
 }
