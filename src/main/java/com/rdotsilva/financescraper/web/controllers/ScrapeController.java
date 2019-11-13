@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -25,48 +22,41 @@ public class ScrapeController {
     @Autowired
     private StockRepository stockRepository;
 
-    @RequestMapping(value = "/scrape", method = RequestMethod.GET)
-    public String scrape() throws SQLException {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
-
-        WebDriver driver = new ChromeDriver();
-
+    public static void Login(WebDriver driver) {
         String loginUrl = "https://login.yahoo.com/config/login?.src=fpctx&.intl=us&.lang=en-US&.done=https%3A%2F%2Fwww.yahoo.com";
+        String email = "ryansilva.student@careerdevs.com";
+        String password = "%x_2*xC98H;";
+
+        String loginId = "login-username";
+        String passwordId = "login-passwd";
 
         driver.get(loginUrl);
-        System.out.println("Navigated to login URL");
 
-        driver.findElement(By.id("login-username")).sendKeys("ryansilva.student@careerdevs.com" + Keys.RETURN);
-        System.out.println("Username entered");
-
+        driver.findElement(By.id(loginId)).sendKeys(email + Keys.RETURN);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.findElement(By.id(passwordId)).sendKeys(password + Keys.RETURN);
+    }
 
-        driver.findElement(By.id("login-passwd")).sendKeys("%x_2*xC98H;" + Keys.RETURN);
-        System.out.println("Login Success");
-
+    public static List<WebElement> NavigateToStockData(WebDriver driver) {
         String portfolioUrl = "https://finance.yahoo.com/portfolio/p_0/view/v1";
 
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        String stockTableTag = "tbody";
+        String stockRowsClass = "simpTblRow";
 
         driver.get(portfolioUrl);
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        WebElement stockTable = driver.findElement(By.tagName(stockTableTag));
+        List<WebElement> stockRows = stockTable.findElements(By.className(stockRowsClass));
 
-        WebElement stockTable = driver.findElement(By.tagName("tbody"));
-        System.out.println("Stock table found");
+        return stockRows;
+    }
 
-        List<WebElement> stockRows = stockTable.findElements(By.className("simpTblRow"));
-        System.out.println("Stock Rows Found: " + stockRows.size());
-
-        ArrayList<Stock> stockList = new ArrayList<Stock>();
-
+    public void InsertStocksIntoDatabase(List<WebElement> stockRows) {
         for (WebElement row : stockRows
         ) {
-
             String[] eachStock = row.getText().split(" ");
-
             String[] splitSymbol = eachStock[0].split("\\r?\\n");
-
             String[] splitMarketCap = eachStock[9].split("\\r?\\n");
 
             java.util.Date scrapeDate = new java.util.Date();
@@ -95,6 +85,23 @@ public class ScrapeController {
 
             stockRepository.save(stock);
         }
+    }
+
+    @RequestMapping(value = "/scrape", method = RequestMethod.GET)
+    public String scrape() throws SQLException {
+        String driverType = "webdriver.chrome.driver";
+        String driverLocation = "C:\\chromedriver\\chromedriver.exe";
+
+        System.setProperty(driverType, driverLocation);
+        WebDriver driver = new ChromeDriver();
+
+        Login(driver);
+
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        List<WebElement> stockRows = NavigateToStockData(driver);
+
+        InsertStocksIntoDatabase(stockRows);
+
         driver.close();
         return "redirect:latest";
     }
