@@ -9,11 +9,4 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebApplication {
 
 	public static void main(String[] args) { SpringApplication.run(WebApplication.class, args);}
-
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		return bCryptPasswordEncoder;
-	}
-
 }

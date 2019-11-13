@@ -60,11 +60,6 @@ public class ScrapeController {
 
         ArrayList<Stock> stockList = new ArrayList<Stock>();
 
-        System.out.println("Attemping DB connection...");
-        String connectionURL = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=YahooFinance;integratedSecurity=true;";
-
-        Connection conn = DriverManager.getConnection(connectionURL);
-
         for (WebElement row : stockRows
         ) {
 

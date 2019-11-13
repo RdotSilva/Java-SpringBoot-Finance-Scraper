@@ -8,6 +8,11 @@
 
 <h1>Yahoo Finance Web Scraper</h1>
 
+<div class="container">
+    <h2> <span th:utext="${userName}"></span></h2>
+    <a th:href="@{/logout}">Sign out</a>
+</div>
+
 <a th:href="scrape">SCRAPE</a>
 <a th:href="stocks">STOCK HISTORY</a>
 <a th:href="latest">LATEST STOCKS</a>
