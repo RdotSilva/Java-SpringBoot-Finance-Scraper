@@ -10,11 +10,18 @@
 </head>
 <body>
 <div th:insert="fragments/navbar.html"></div>
-<h1 class="text-center">Yahoo Finance Web Scraper</h1>
 
 <div class="container">
-    <h2 class="text-center"> <span th:utext="${userName}"></span></h2>
+    <h1 class="text-center"> <span th:utext="${userName}"></span></h1>
 </div>
+<br>
+<h4 class="text-center">Yahoo Finance Web Scraper</h4>
+<p class="text-center"><strong>Getting Started</strong></p>
+<p class="text-center">Click <a href="/scrape"><b>SCRAPE</b></a> to scrape & view results.</p>
+<p class="text-center">Click <a href="/latest"><b>Latest</b></a> to see last 10 stock results.</p>
+<p class="text-center">Click <a href="/stocks"><b>Stocks</b></a> to see entire stock history.</p>
+
+
 </body>
 <footer>
     <div th:insert="fragments/footer.html"></div>
