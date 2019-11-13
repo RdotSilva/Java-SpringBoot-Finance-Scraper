@@ -35,6 +35,14 @@ public class User {
         this.password = password;
     }
 
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
@@ -48,6 +56,9 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "active")
+    private int active;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
