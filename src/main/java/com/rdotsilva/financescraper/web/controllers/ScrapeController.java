@@ -2,6 +2,7 @@ package com.rdotsilva.financescraper.web.controllers;
 
 import com.rdotsilva.financescraper.web.models.Stock;
 import com.rdotsilva.financescraper.web.repositories.StockRepository;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.openqa.selenium.By;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -88,12 +91,16 @@ public class ScrapeController {
     }
 
     @RequestMapping(value = "/scrape", method = RequestMethod.GET)
-    public String scrape() throws SQLException {
+    public String scrape() throws SQLException, IOException {
         String driverType = "webdriver.chrome.driver";
-        String driverLocation = "C:\\chromedriver\\chromedriver.exe";
+        String driverLocation = Paths.get(System.getProperty("user.dir")).toRealPath() + "\\src\\main\\resources\\drivers\\chromedriver.exe";
 
         System.setProperty(driverType, driverLocation);
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setHeadless(true);
+
+
+        WebDriver driver = new ChromeDriver(chromeOptions);
 
         Login(driver);
 
