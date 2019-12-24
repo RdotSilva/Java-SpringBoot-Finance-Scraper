@@ -25,7 +25,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-envelope"></i></div>
                         <input type="email" th:field="*{email}" class="form-control" id="email"
                                placeholder="email@address.com" required autofocus>
                     </div>
@@ -50,6 +50,7 @@
                                placeholder="Password" required>
                     </div>
                 </div>
+                <hr>
             </div>
             <div class="col-md-3">
                 <div class="form-control-feedback">
@@ -60,12 +61,16 @@
         </div>
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-center">
                 <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
             </div>
         </div>
+        <br>
         <div class="margin-top20 text-center"> Already have an account? <a th:href="@{/login}">Login</a></div>
     </form>
 </div>
 </body>
+<footer>
+    <div th:insert="fragments/footer.html"></div>
+</footer>
 </html>
