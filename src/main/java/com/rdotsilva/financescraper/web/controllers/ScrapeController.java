@@ -95,7 +95,9 @@ public class ScrapeController {
     public String scrape() throws SQLException, IOException {
         // Options for local driver
         String driverType = "webdriver.chrome.driver";
-        String driverLocation = "app/src/main/resources/drivers//chromedriver.exe";
+        String runPath = System.getProperty("user.dir");
+
+        String driverLocation = runPath + "/src/main/resources/drivers//chromedriver.exe";
 
         System.setProperty(driverType, driverLocation);
 //        ChromeOptions chromeOptions = new ChromeOptions();
