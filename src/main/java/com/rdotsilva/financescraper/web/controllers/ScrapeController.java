@@ -97,7 +97,7 @@ public class ScrapeController {
         String driverType = "webdriver.chrome.driver";
         String runPath = System.getProperty("user.dir");
 
-        String driverLocation = runPath + "/src/main/resources/drivers//chromedriver";
+        String driverLocation = runPath + "/src/main/resources/drivers/linux/chromedriver";
 
         System.setProperty(driverType, driverLocation);
 //        ChromeOptions chromeOptions = new ChromeOptions();
