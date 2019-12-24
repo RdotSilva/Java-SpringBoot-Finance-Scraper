@@ -93,7 +93,7 @@ public class ScrapeController {
     @RequestMapping(value = "/scrape", method = RequestMethod.GET)
     public String scrape() throws SQLException, IOException {
         String driverType = "webdriver.chrome.driver";
-        String driverLocation = Paths.get(System.getProperty("user.dir")).toRealPath() + "\\src\\main\\resources\\drivers\\chromedriver.exe";
+        String driverLocation = "app\\src\\main\\resources\\drivers\\chromedriver";
 
         System.setProperty(driverType, driverLocation);
         ChromeOptions chromeOptions = new ChromeOptions();
