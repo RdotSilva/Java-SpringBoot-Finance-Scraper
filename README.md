@@ -6,6 +6,8 @@ Fully secure user registration and login is included with password hashing and a
 
 Registered users have access to scrape data history and can initiate a new scrape.
 
+Live Demo: [Heroku Demo](https://yahoo-finance-scraper.herokuapp.com/)
+
 ### Prerequisites
 
 You must create an application.properties file with your database/hibernate configuration options.
@@ -70,12 +72,6 @@ firefoxOptions.setHeadless(true);
 WebDriver driver = new ChromeDriver(firefoxOptions);
 ```
 
-## Screenshots
-
-![History](https://i.imgur.com/0NNHFIC.png "History")
-![Login](https://i.imgur.com/WCA0n8V.png "Login")
-![Latest](https://i.imgur.com/SxJepsz.png "Latest")
-
 ## Built With
 
 - Java
@@ -87,6 +83,13 @@ WebDriver driver = new ChromeDriver(firefoxOptions);
 - Selenium
 - MySQL
 - IntelliJ IDEA
+
+
+## Screenshots
+
+![History](https://i.imgur.com/0NNHFIC.png "History")
+![Login](https://i.imgur.com/WCA0n8V.png "Login")
+![Latest](https://i.imgur.com/SxJepsz.png "Latest")
 
 ## License
 
