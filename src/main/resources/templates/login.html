@@ -30,7 +30,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-envelope"></i></div>
                         <input type="email" id="email" name="email" class="form-control" placeholder="email@address.com" required autofocus>
                     </div>
                 </div>
@@ -48,7 +48,8 @@
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
-                    <div class="checkbox mb-3">
+                    <hr>
+                    <div class="checkbox text-center">
                         <label>
                             <input type="checkbox" name="remember-me" /> Remember me
                         </label>
@@ -58,12 +59,68 @@
         </div>
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-center">
                 <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Sign in</button>
             </div>
         </div>
+        <br>
+        <div class="margin-top20 text-center">Test Email: <b>test@test.com</b> Password: <b>test123</b></div>
+        <br>
         <div class="margin-top20 text-center"> Don't have an account? <a th:href="@{/registration}">Create an account</a></div>
     </form>
+    <br>
+    <h1 class="text-center">Retrospective</h1>
+
+    <div class="container">
+        <p class="text-center">
+            This is a brief retrospective for this project.
+        </p>
+        <p class="text-center">
+            My official start date for the project was 10/13/19 and I finished the project on 11/13/19.
+
+            The project was broken into 3 phases. I was required to create a Trello board and complete this project using
+            the Agile Methodology.
+        </p>
+
+        <p class="text-center">
+            Phase 1 required me to create a Yahoo Finance account and save stocks to my portfolio.
+            After this I was asked to create a console scraping application that would log into my finance account and scrape the data
+            from the stock tables and write it to console.
+        </p>
+
+        <p class="text-center">
+            Phase 2 required me to create a new database to work with. I was allowed to pick any database I wanted. After creating a database
+            I would have to outline a schema to use for the stock data. I then had to integrate the newly created database into my
+            stock scraper console app. The data needed to be stored in the database and persisted.
+        </p>
+
+        <p class="text-center">
+            Phase 3 required me to implement a front end web application to showcase the scraper the data. I was required to
+            implement user authentication, ensuring users could only access the data once they were registered in the database.
+            I also needed to integrate my old console scraper into the web app and get it to work with the push of a button.
+            Finally I was required to display the data from the current scrape, and also all previous scrape data.
+        </p>
+
+        <p class="text-center">
+            For extra credit I decided to deploy my web scraper. I choose to use Heroku as the deployment platform.
+            This required a great deal of troubleshooting and the web application you see here is the result.
+        </p>
+
+        <h4 class="text-center">Languages/Tools/Frameworks used in the project</h4>
+        <div class="list-group">
+            <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" class="list-group-item list-group-item-action" target="_blank">Java 1.8</a>
+            <a href="https://maven.apache.org/" class="list-group-item list-group-item-action" target="_blank">Maven</a>
+            <a href="https://www.mysql.com/" class="list-group-item list-group-item-action" target="_blank">MySQL</a>
+            <a href="https://spring.io/" class="list-group-item list-group-item-action" target="_blank">Spring Framework 5</a>
+            <a href="https://www.thymeleaf.org/" class="list-group-item list-group-item-action" target="_blank">Thymeleaf</a>
+            <a href="https://www.seleniumhq.org/projects/webdriver/" class="list-group-item list-group-item-action" target="_blank">Selenium Webdriver</a>
+            <a href="https://www.heroku.com" class="list-group-item list-group-item-action" target="_blank">Heroku</a>
+            <a href="https://www.jetbrains.com/idea/" class="list-group-item list-group-item-action" target="_blank">IntelliJ IDEA</a>
+        </div>
+    </div>
 </div>
 </body>
+<footer>
+    <div th:insert="fragments/footer.html"></div>
+</footer>
 </html>
