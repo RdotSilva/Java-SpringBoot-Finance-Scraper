@@ -93,25 +93,18 @@ public class ScrapeController {
 
     @RequestMapping(value = "/scrape", method = RequestMethod.GET)
     public String scrape() throws SQLException, IOException {
-        // Options for local driver
+        // Options for local driver. Uncomment when running locally.
 //        String driverType = "webdriver.chrome.driver";
-//        String runPath = System.getProperty("user.dir");
-//
-//        String driverLocation = runPath + "/src/main/resources/drivers/linux/chromedriver";
-//
+//        String driverLocation = Paths.get(System.getProperty("user.dir")).toRealPath() + "\\src\\main\\resources\\drivers\\chromedriver.exe";
 //        System.setProperty(driverType, driverLocation);
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
-        // Heroku driver options
+
+        // Heroku driver options. Use these when deploying to Heroku.
         ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--headless");
-//        chromeOptions.addArguments("window-size=1200x600");
-//        String binaryPath= EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
         String binaryPath = "/app/.apt/usr/bin/google-chrome";
         System.out.println("Path: " + binaryPath);
         chromeOptions.setBinary(binaryPath);
-//        chromeOptions.addArguments("--disable-gpu");
-//        chromeOptions.addArguments("--no-sandbox");
 
         WebDriver driver = new ChromeDriver(chromeOptions);
 
