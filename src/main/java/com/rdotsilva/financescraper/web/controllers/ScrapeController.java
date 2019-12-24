@@ -94,12 +94,12 @@ public class ScrapeController {
     @RequestMapping(value = "/scrape", method = RequestMethod.GET)
     public String scrape() throws SQLException, IOException {
         // Options for local driver
-        String driverType = "webdriver.chrome.driver";
-        String runPath = System.getProperty("user.dir");
-
-        String driverLocation = runPath + "/src/main/resources/drivers/linux/chromedriver";
-
-        System.setProperty(driverType, driverLocation);
+//        String driverType = "webdriver.chrome.driver";
+//        String runPath = System.getProperty("user.dir");
+//
+//        String driverLocation = runPath + "/src/main/resources/drivers/linux/chromedriver";
+//
+//        System.setProperty(driverType, driverLocation);
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
         // Heroku driver options
