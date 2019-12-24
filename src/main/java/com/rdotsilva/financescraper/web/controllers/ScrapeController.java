@@ -106,7 +106,6 @@ public class ScrapeController {
         ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("--headless");
 //        chromeOptions.addArguments("window-size=1200x600");
-        //GOOGLE_CHROME_SHIM GOOGLE_CHROME_BIN
 //        String binaryPath= EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
         String binaryPath = "/app/.apt/usr/bin/google-chrome";
         System.out.println("Path: " + binaryPath);
