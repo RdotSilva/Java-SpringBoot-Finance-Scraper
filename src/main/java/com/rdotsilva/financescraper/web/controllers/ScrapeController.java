@@ -94,22 +94,23 @@ public class ScrapeController {
     @RequestMapping(value = "/scrape", method = RequestMethod.GET)
     public String scrape() throws SQLException, IOException {
         // Options for local driver
-//        String driverType = "webdriver.chrome.driver";
-//        String driverLocation = "\\src\\main\\resources\\drivers\\chromedriver";
-//
-//        System.setProperty(driverType, driverLocation);
+        String driverType = "webdriver.chrome.driver";
+        String driverLocation = "/src/main/resources/drivers//chromedriver.exe";
+
+        System.setProperty(driverType, driverLocation);
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
         // Heroku driver options
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("window-size=1200x600");
+//        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("window-size=1200x600");
         //GOOGLE_CHROME_SHIM GOOGLE_CHROME_BIN
-        String binaryPath= EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
-        System.out.println("Path: "+binaryPath);
+//        String binaryPath= EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
+        String binaryPath = "/app/.apt/usr/bin/google-chrome";
+        System.out.println("Path: " + binaryPath);
         chromeOptions.setBinary(binaryPath);
-        chromeOptions.addArguments("--disable-gpu");
-        chromeOptions.addArguments("--no-sandbox");
+//        chromeOptions.addArguments("--disable-gpu");
+//        chromeOptions.addArguments("--no-sandbox");
 
         WebDriver driver = new ChromeDriver(chromeOptions);
 
